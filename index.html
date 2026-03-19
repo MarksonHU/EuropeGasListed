@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>European Energy Shock — Desk Intelligence</title>
+<style>
+:root{
+  --bg:#07111f;--bg2:#0a1630;--panel:#0d1729;--panel2:#111f35;--line:#213555;
+  --text:#edf4ff;--muted:#90a6c6;--soft:#b9c9df;
+  --aqua:#5eead4;--blue:#7dd3fc;--violet:#c4b5fd;--amber:#fbbf24;--rose:#fb7185;--green:#86efac;
+  --red1:#641d2b;--red2:#a63349;--green1:#173b33;--green2:#2f8a6d;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);
+background:
+radial-gradient(1400px 900px at -5% -10%, rgba(94,234,212,.16), transparent 35%),
+radial-gradient(1100px 700px at 110% 0%, rgba(125,211,252,.14), transparent 38%),
+linear-gradient(180deg,#081120 0%,#091428 20%,#07111f 100%);
+}
+.wrap{max-width:1400px;margin:0 auto;padding:22px}
+.hero{
+  position:relative;overflow:hidden;border-radius:28px;padding:32px 32px 24px;
+  background:
+    radial-gradient(600px 300px at 10% 0%, rgba(94,234,212,.18), transparent 60%),
+    radial-gradient(520px 280px at 90% 10%, rgba(196,181,253,.18), transparent 62%),
+    linear-gradient(180deg, rgba(16,27,48,.96), rgba(8,17,31,.98));
+  border:1px solid var(--line);box-shadow:0 28px 80px rgba(0,0,0,.32);
+}
+.hero:before{content:"";position:absolute;inset:auto -8% -35% auto;width:420px;height:420px;border-radius:50%;
+background:radial-gradient(circle, rgba(251,113,133,.18) 0%, rgba(251,113,133,0) 68%);pointer-events:none}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--aqua);font-weight:800}
+h1{font-size:46px;line-height:1.04;margin:10px 0 12px;max-width:980px}
+.hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;
+border:1px solid rgba(255,255,255,.09);background:rgba(14,24,42,.72);color:#d7e7ff;font-size:13px}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.nav a{text-decoration:none;color:#d9e7ff;background:#12203a;border:1px solid var(--line);padding:10px 12px;border-radius:999px;font-size:14px}
+.section{margin-top:22px}
+.section h2{margin:0 0 14px;font-size:30px;letter-spacing:-.02em}
+.grid-8{display:grid;grid-template-columns:repeat(8,1fr);gap:14px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid-2{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+.card{background:linear-gradient(180deg,#0f1a2d,#0b1525);border:1px solid var(--line);border-radius:22px;padding:18px}
+.card.soft{background:linear-gradient(180deg,#101d33,#0e1728)}
+.pulse-card{position:relative;overflow:hidden;padding:16px 16px 14px;border-radius:20px;border:1px solid var(--line);
+background:linear-gradient(180deg,rgba(16,27,47,.95),rgba(10,19,35,.98));min-height:126px}
+.pulse-card:after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+background:linear-gradient(90deg, rgba(94,234,212,.2), rgba(125,211,252,.85), rgba(196,181,253,.2));}
+.kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#9fb3cf;font-weight:800}
+.value{font-size:34px;font-weight:900;line-height:1.05;margin-top:10px}
+.subv{margin-top:8px;color:#d8e6ff;font-size:14px}
+.asof{margin-top:10px;color:var(--muted);font-size:12px}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;font-size:11px;
+font-weight:800;letter-spacing:.06em;text-transform:uppercase;border:1px solid rgba(255,255,255,.08)}
+.badge.blue{background:rgba(125,211,252,.12);color:#d8f3ff}
+.badge.green{background:rgba(134,239,172,.12);color:#d8ffe6}
+.badge.amber{background:rgba(251,191,36,.12);color:#ffeab3}
+.badge.violet{background:rgba(196,181,253,.12);color:#efe6ff}
+.badge.rose{background:rgba(251,113,133,.12);color:#ffd9e0}
+.topline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.mindmap{position:relative;min-height:500px}
+.node{position:absolute;max-width:220px;padding:14px 16px;border-radius:20px;border:1px solid var(--line);
+background:linear-gradient(180deg,rgba(17,29,49,.96),rgba(11,20,35,.98));box-shadow:0 12px 30px rgba(0,0,0,.18)}
+.node h3{margin:0 0 6px;font-size:18px}
+.node p{margin:0;color:#d4e2f5;font-size:13px;line-height:1.45}
+.node.aqua{box-shadow:0 0 0 1px rgba(94,234,212,.15),0 20px 36px rgba(0,0,0,.22)}
+.node.rose{box-shadow:0 0 0 1px rgba(251,113,133,.18),0 20px 36px rgba(0,0,0,.22)}
+.node.blue{box-shadow:0 0 0 1px rgba(125,211,252,.18),0 20px 36px rgba(0,0,0,.22)}
+.node.violet{box-shadow:0 0 0 1px rgba(196,181,253,.18),0 20px 36px rgba(0,0,0,.22)}
+.node.green{box-shadow:0 0 0 1px rgba(134,239,172,.18),0 20px 36px rgba(0,0,0,.22)}
+.lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.cascade{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
+.step{position:relative;padding:16px;border-radius:20px;border:1px solid var(--line);background:linear-gradient(180deg,#101b30,#0c1526)}
+.step:not(:last-child):after{content:"›";position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:30px;color:#6f88ab}
+.step .n{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8fa4c2;font-weight:900}
+.step h4{margin:8px 0 4px;font-size:18px}
+.step p{margin:0;color:#d1ddf0;font-size:13px}
+.band-chart{display:grid;gap:14px}
+.band{padding:14px 16px;border-radius:18px;background:#0e1728;border:1px solid var(--line)}
+.band .row{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.track{margin-top:10px;height:14px;background:#0a1220;border-radius:999px;overflow:hidden;border:1px solid rgba(255,255,255,.05)}
+.fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--rose),var(--amber),var(--aqua))}
+.legend-line{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px;color:var(--muted);font-size:12px}
+.matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.quad{padding:18px;border-radius:22px;border:1px solid var(--line);min-height:188px;background:linear-gradient(180deg,#101a2d,#0b1423)}
+.quad h3{margin:0 0 12px;font-size:20px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:inline-flex;align-items:center;padding:8px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.07);background:#12203a;color:#e4efff;font-size:13px}
+.tabs{display:flex;gap:10px;flex-wrap:wrap}
+.tab-btn{padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:#12203a;color:#d8e7ff;font-weight:700;cursor:pointer}
+.tab-btn.active{background:linear-gradient(90deg,rgba(94,234,212,.18),rgba(125,211,252,.18));box-shadow:inset 0 0 0 1px rgba(125,211,252,.28)}
+.search{width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:#0b1424;color:#eff4ff;font-size:14px}
+.table-wrap{overflow:auto;border-radius:18px;border:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;min-width:900px;background:#0e1728}
+th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;position:relative}
+th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#9fb2cc;background:#111c31;position:sticky;top:0;z-index:2}
+td{font-size:14px}
+tr:hover td{background:#101a2d}
+.score{font-weight:900}
+.score.pos{color:#ffd0d0}
+.score.neg{color:#c5ffdd}
+.mini-bars{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.rank-list{display:grid;gap:10px}
+.rank{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:12px 14px;background:#10192d;border:1px solid var(--line);border-radius:16px}
+.rank .name{font-weight:800}
+.bar{height:10px;width:170px;border-radius:999px;background:#0a1220;border:1px solid rgba(255,255,255,.05);overflow:hidden}
+.bar > span{display:block;height:100%;border-radius:999px}
+.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.scenario{padding:18px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(180deg,#111d32,#0b1322)}
+.scenario h3{margin:0 0 8px;font-size:22px}
+.prob{font-size:30px;font-weight:900;margin-bottom:10px}
+.scenario ul{padding-left:18px;margin:0}
+.scenario li{margin:0 0 6px;color:#d6e2f4}
+.supply{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.source-card{padding:16px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(180deg,#101a2d,#0c1524);min-height:130px}
+.source-card h4{margin:0 0 8px;font-size:17px}
+.source-card .big{font-size:30px;font-weight:900;margin:2px 0 4px}
+.footer{margin:26px 0 8px;color:#8fa3bf;font-size:12px;text-align:center}
+.hide{display:none}
+@media (max-width: 1180px){
+  .grid-8{grid-template-columns:repeat(4,1fr)}
+  .grid-4,.grid-3,.supply,.scenarios,.matrix,.mini-bars{grid-template-columns:repeat(2,1fr)}
+  .grid-2{grid-template-columns:1fr}
+  .cascade{grid-template-columns:repeat(2,1fr)}
+  .mindmap{min-height:760px}
+}
+@media (max-width: 760px){
+  .wrap{padding:16px}
+  h1{font-size:36px}
+  .grid-8,.grid-4,.grid-3,.supply,.scenarios,.matrix,.mini-bars,.cascade{grid-template-columns:1fr}
+  .mindmap{min-height:1120px}
+  .node{position:relative !important; left:auto !important; top:auto !important; max-width:none; margin-bottom:12px}
+  .lines{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero" id="top">
+    <div class="eyebrow">Europe-wide energy shock dashboard</div>
+    <h1>European Energy Shock — Desk Intelligence</h1>
+    <div class="hero-meta">
+      <span class="pill">As of 19 Mar 2026</span>
+      <span class="pill">Large Cap + SMID scorecards</span>
+      <span class="pill">Europe-wide sector view</span>
+      <span class="pill">Macro + transmission + scenario view</span>
+    </div>
+    <div class="nav">
+      <a href="#pulse">Market Pulse</a>
+      <a href="#mindmap">Shock Map</a>
+      <a href="#cascade">Cascade</a>
+      <a href="#matrix">Sector Matrix</a>
+      <a href="#scorecards">Scorecards</a>
+      <a href="#scenarios">Scenarios</a>
+    </div>
+  </section>
+
+  <section class="section" id="pulse">
+    <h2>Market Pulse</h2>
+    <div class="grid-8">
+      <div class="pulse-card"><div class="badge amber">Gas</div><div class="kicker">TTF settle</div><div class="value">€65/MWh</div><div class="asof">19 Mar 2026</div></div>
+      <div class="pulse-card"><div class="badge rose">Gas</div><div class="kicker">TTF peak</div><div class="value">€74/MWh</div><div class="asof">19 Mar 2026</div></div>
+      <div class="pulse-card"><div class="badge amber">Oil</div><div class="kicker">Brent settle</div><div class="value">$113.4</div><div class="asof">19 Mar 2026</div></div>
+      <div class="pulse-card"><div class="badge rose">Oil</div><div class="kicker">Brent peak</div><div class="value">$119.1</div><div class="asof">19 Mar 2026</div></div>
+      <div class="pulse-card"><div class="badge green">ECB</div><div class="kicker">Deposit rate</div><div class="value">2.00%</div><div class="asof">19 Mar 2026</div></div>
+      <div class="pulse-card"><div class="badge green">Euro area</div><div class="kicker">HICP</div><div class="value">1.9%</div><div class="asof">Feb 2026</div></div>
+      <div class="pulse-card"><div class="badge violet">LNG</div><div class="kicker">Qatar supply hit</div><div class="value">17%</div><div class="asof">Current outage estimate</div></div>
+      <div class="pulse-card"><div class="badge blue">Europe</div><div class="kicker">End-March storage view</div><div class="value">22–27%</div><div class="asof">Analyst range</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="mindmap">
+    <h2>Shock Map</h2>
+    <div class="card soft mindmap">
+      <svg class="lines" viewBox="0 0 1200 500" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="lg1" x1="0" x2="1"><stop offset="0%" stop-color="rgba(94,234,212,.75)"/><stop offset="100%" stop-color="rgba(125,211,252,.75)"/></linearGradient>
+          <linearGradient id="lg2" x1="0" x2="1"><stop offset="0%" stop-color="rgba(251,113,133,.75)"/><stop offset="100%" stop-color="rgba(251,191,36,.75)"/></linearGradient>
+        </defs>
+        <path d="M190 90 C 300 90, 320 170, 430 170" stroke="url(#lg1)" stroke-width="4" fill="none"/>
+        <path d="M190 90 C 290 90, 320 330, 430 330" stroke="url(#lg1)" stroke-width="4" fill="none"/>
+        <path d="M560 170 C 680 170, 705 125, 810 125" stroke="url(#lg2)" stroke-width="4" fill="none"/>
+        <path d="M560 170 C 680 170, 705 255, 810 255" stroke="url(#lg2)" stroke-width="4" fill="none"/>
+        <path d="M560 330 C 680 330, 705 255, 810 255" stroke="url(#lg2)" stroke-width="4" fill="none"/>
+        <path d="M560 330 C 680 330, 705 390, 810 390" stroke="url(#lg2)" stroke-width="4" fill="none"/>
+        <path d="M930 125 C 1010 125, 1010 205, 1085 205" stroke="url(#lg1)" stroke-width="4" fill="none"/>
+        <path d="M930 255 C 1010 255, 1010 205, 1085 205" stroke="url(#lg1)" stroke-width="4" fill="none"/>
+        <path d="M930 390 C 1010 390, 1010 205, 1085 205" stroke="url(#lg1)" stroke-width="4" fill="none"/>
+      </svg>
+      <div class="node aqua" style="left:24px;top:48px">
+        <h3>Supply shock</h3>
+        <p>Ras Laffan damage, tighter LNG balance, shipping and insurance stress.</p>
+      </div>
+      <div class="node blue" style="left:360px;top:130px">
+        <h3>European gas</h3>
+        <p>TTF reprices first. Refill economics and spot cargo competition move next.</p>
+      </div>
+      <div class="node rose" style="left:360px;top:290px">
+        <h3>Power curve</h3>
+        <p>Gas-heavy systems rerate quickly through merit-order pricing and balancing costs.</p>
+      </div>
+      <div class="node violet" style="left:740px;top:78px">
+        <h3>Inflation pulse</h3>
+        <p>Energy, freight and selected food chains re-accelerate first.</p>
+      </div>
+      <div class="node violet" style="left:740px;top:208px">
+        <h3>Policy reaction</h3>
+        <p>ECB pause extends; fiscal shields and intervention risk rise across utilities and retail tariffs.</p>
+      </div>
+      <div class="node green" style="left:740px;top:343px">
+        <h3>Earnings split</h3>
+        <p>Upstream, LNG-linked and selected renewables outperform; chemicals, glass, metals and paper lag.</p>
+      </div>
+      <div class="node aqua" style="right:24px;top:160px">
+        <h3>Market leadership</h3>
+        <p>Natural longs: upstream & LNG. Relative defense: regulated grids, select renewables, low-gas systems.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="cascade">
+    <h2>Top-Down Cascade</h2>
+    <div class="cascade">
+      <div class="step"><div class="n">01</div><h4>Attack / outage</h4><p>Physical disruption</p></div>
+      <div class="step"><div class="n">02</div><h4>LNG repricing</h4><p>Global balancing tightens</p></div>
+      <div class="step"><div class="n">03</div><h4>TTF jump</h4><p>Europe clears higher</p></div>
+      <div class="step"><div class="n">04</div><h4>Power up</h4><p>Gas-fired systems rerate</p></div>
+      <div class="step"><div class="n">05</div><h4>CPI re-accels</h4><p>Second-round risk returns</p></div>
+      <div class="step"><div class="n">06</div><h4>Rates stay higher</h4><p>Easing pushed out</p></div>
+      <div class="step"><div class="n">07</div><h4>EPS divergence</h4><p>Energy wins, processes lose</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="grid-2">
+      <div class="card">
+        <div class="topline"><h2 style="margin:0;font-size:28px">Pressure Bands</h2><span class="badge blue">Europe</span></div>
+        <div class="band-chart">
+          <div class="band"><div class="row"><strong>Gas shock intensity</strong><span>88 / 100</span></div><div class="track"><div class="fill" style="width:88%"></div></div></div>
+          <div class="band"><div class="row"><strong>Refill stress</strong><span>81 / 100</span></div><div class="track"><div class="fill" style="width:81%"></div></div></div>
+          <div class="band"><div class="row"><strong>Power spillover</strong><span>74 / 100</span></div><div class="track"><div class="fill" style="width:74%"></div></div></div>
+          <div class="band"><div class="row"><strong>Inflation pass-through</strong><span>63 / 100</span></div><div class="track"><div class="fill" style="width:63%"></div></div></div>
+          <div class="band"><div class="row"><strong>Policy constraint</strong><span>58 / 100</span></div><div class="track"><div class="fill" style="width:58%"></div></div></div>
+        </div>
+      </div>
+
+      <div class="card" id="matrix">
+        <div class="topline"><h2 style="margin:0;font-size:28px">Sector Matrix</h2><span class="badge violet">Cross-Europe</span></div>
+        <div class="matrix">
+          <div class="quad">
+            <h3>Direct losers</h3>
+            <div class="chips">
+              <span class="chip">Chemicals</span><span class="chip">Fertilizers</span><span class="chip">Glass</span>
+              <span class="chip">Ceramics</span><span class="chip">Steel</span><span class="chip">Copper smelting</span>
+            </div>
+          </div>
+          <div class="quad">
+            <h3>Indirect losers</h3>
+            <div class="chips">
+              <span class="chip">Packaging</span><span class="chip">Paper</span><span class="chip">Transport</span>
+              <span class="chip">Consumer cyclicals</span><span class="chip">Airlines</span>
+            </div>
+          </div>
+          <div class="quad">
+            <h3>Relative defense</h3>
+            <div class="chips">
+              <span class="chip">Grids</span><span class="chip">Low-gas utilities</span><span class="chip">Pharma packaging</span>
+              <span class="chip">Hydro-linked power</span>
+            </div>
+          </div>
+          <div class="quad">
+            <h3>Natural longs</h3>
+            <div class="chips">
+              <span class="chip">Upstream oil & gas</span><span class="chip">LNG optionality</span>
+              <span class="chip">Selected renewables</span><span class="chip">Service names</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Supply Stack</h2>
+    <div class="supply">
+      <div class="source-card"><div class="badge green">Pipeline</div><h4>Norway</h4><div class="big">#1</div><div class="subv">Largest gas supplier to the EU</div></div>
+      <div class="source-card"><div class="badge blue">LNG</div><h4>United States</h4><div class="big">#1</div><div class="subv">Top LNG source to Europe</div></div>
+      <div class="source-card"><div class="badge violet">Qatar</div><h4>Europe LNG share</h4><div class="big">9%</div><div class="subv">Direct LNG dependency</div></div>
+      <div class="source-card"><div class="badge amber">Qatar</div><h4>Current supply loss</h4><div class="big">17%</div><div class="subv">Estimated export hit</div></div>
+      <div class="source-card"><div class="badge rose">Russia</div><h4>Residual share</h4><div class="big">13%</div><div class="subv">EU gas supply in 2025</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="scorecards">
+    <div class="topline">
+      <h2 style="margin:0">Scorecards</h2>
+      <div class="tabs">
+        <button class="tab-btn active" data-target="largecap-panel">Large Cap</button>
+        <button class="tab-btn" data-target="smid-panel">SMID</button>
+      </div>
+    </div>
+    <div class="card">
+      <input id="nameFilter" class="search" type="text" placeholder="Search company, sector or country" />
+      <div class="legend-line">
+        <span>BASF +7.9 vs Equinor −2.8</span>
+        <span>SGL Carbon +6.7 vs Aker BP −2.6</span>
+        <span>Higher = more exposed</span>
+        <span>Lower = more natural hedge / beneficiary</span>
+      </div>
+    </div>
+
+    <div class="mini-bars" style="margin-top:16px">
+      <div class="card">
+        <div class="topline"><h3 style="margin:0">Large-cap extremes</h3><span class="badge blue">Scorecard</span></div>
+        <div class="rank-list">
+          <div class="rank"><div><div class="name">BASF</div><div class="asof" style="margin:4px 0 0">+7.9</div></div><div class="bar"><span style="width:100%;background:linear-gradient(90deg,#5d1b29,#fb7185)"></span></div></div>
+          <div class="rank"><div><div class="name">Covestro</div><div class="asof" style="margin:4px 0 0">+7.4</div></div><div class="bar"><span style="width:94%;background:linear-gradient(90deg,#5d1b29,#fb7185)"></span></div></div>
+          <div class="rank"><div><div class="name">Wacker Chemie</div><div class="asof" style="margin:4px 0 0">+7.1</div></div><div class="bar"><span style="width:90%;background:linear-gradient(90deg,#5d1b29,#fb7185)"></span></div></div>
+          <div class="rank"><div><div class="name">Equinor</div><div class="asof" style="margin:4px 0 0">−2.8</div></div><div class="bar"><span style="width:36%;background:linear-gradient(90deg,#123328,#86efac)"></span></div></div>
+          <div class="rank"><div><div class="name">Shell</div><div class="asof" style="margin:4px 0 0">−2.7</div></div><div class="bar"><span style="width:35%;background:linear-gradient(90deg,#123328,#86efac)"></span></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="topline"><h3 style="margin:0">SMID extremes</h3><span class="badge blue">Scorecard</span></div>
+        <div class="rank-list">
+          <div class="rank"><div><div class="name">SGL Carbon</div><div class="asof" style="margin:4px 0 0">+6.7</div></div><div class="bar"><span style="width:100%;background:linear-gradient(90deg,#5d1b29,#fb7185)"></span></div></div>
+          <div class="rank"><div><div class="name">Vidrala</div><div class="asof" style="margin:4px 0 0">+6.6</div></div><div class="bar"><span style="width:98%;background:linear-gradient(90deg,#5d1b29,#fb7185)"></span></div></div>
+          <div class="rank"><div><div class="name">Aurubis</div><div class="asof" style="margin:4px 0 0">+6.2</div></div><div class="bar"><span style="width:93%;background:linear-gradient(90deg,#5d1b29,#fb7185)"></span></div></div>
+          <div class="rank"><div><div class="name">Aker BP</div><div class="asof" style="margin:4px 0 0">−2.6</div></div><div class="bar"><span style="width:39%;background:linear-gradient(90deg,#123328,#86efac)"></span></div></div>
+          <div class="rank"><div><div class="name">Var Energi</div><div class="asof" style="margin:4px 0 0">−2.5</div></div><div class="bar"><span style="width:38%;background:linear-gradient(90deg,#123328,#86efac)"></span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="largecap-panel" class="table-panel" style="margin-top:16px">
+      <div class="table-wrap"><table id="largecapTable"><thead><tr><th>Large Cap </th><th>Sector</th><th>Gas</th><th>EU</th><th>Price</th><th>Subst</th><th>Chain</th><th>Comp</th><th>Rating</th></tr></thead><tbody><tr><td>BASF</td><td>Chemicals</td><td>9.5</td><td>7.0</td><td>6.0</td><td>9.0</td><td>8.0</td><td class="score pos">+7.9</td><td class="sev">Severe</td></tr><tr><td>Covestro</td><td>Chemicals</td><td>8.5</td><td>8.0</td><td>5.0</td><td>8.5</td><td>7.0</td><td class="score pos">+7.4</td><td class="sev">Severe</td></tr><tr><td>Wacker Chemie</td><td>Chemicals</td><td>8.0</td><td>8.5</td><td>5.0</td><td>8.0</td><td>6.0</td><td class="score pos">+7.1</td><td class="sev">Severe</td></tr><tr><td>Salzgitter</td><td>Steel</td><td>5.5</td><td>9.0</td><td>7.0</td><td>5.0</td><td>6.5</td><td class="score pos">+6.6</td><td class="sev">Severe</td></tr><tr><td>ThyssenKrupp</td><td>Steel</td><td>6.0</td><td>8.0</td><td>7.0</td><td>5.0</td><td>7.0</td><td class="score pos">+6.6</td><td class="sev">Severe</td></tr><tr><td>Lanxess</td><td>Specialty Chem</td><td>7.0</td><td>7.5</td><td>5.5</td><td>7.0</td><td>6.0</td><td class="score pos">+6.6</td><td class="sev">Severe</td></tr><tr><td>Verallia</td><td>Glass</td><td>8.0</td><td>8.0</td><td>5.0</td><td>8.5</td><td>3.0</td><td class="score pos">+6.5</td><td class="sev">Severe</td></tr><tr><td>Evonik</td><td>Specialty Chem</td><td>7.0</td><td>7.0</td><td>5.0</td><td>7.0</td><td>6.0</td><td class="score pos">+6.4</td><td class="sev">Severe</td></tr><tr><td>Yara International</td><td>Fertilizers</td><td>9.0</td><td>5.0</td><td>3.0</td><td>9.5</td><td>4.0</td><td class="score pos">+6.1</td><td class="sev">Severe</td></tr><tr><td>ArcelorMittal</td><td>Steel</td><td>6.0</td><td>5.5</td><td>6.5</td><td>5.0</td><td>7.0</td><td class="score pos">+6.0</td><td class="sev">Severe</td></tr><tr><td>Saint-Gobain</td><td>Build. Materials</td><td>7.0</td><td>6.0</td><td>4.5</td><td>7.5</td><td>5.0</td><td class="score pos">+6.0</td><td class="sev">Severe</td></tr><tr><td>Heidelberg Materials</td><td>Build. Materials</td><td>6.0</td><td>5.5</td><td>5.0</td><td>5.5</td><td>4.5</td><td class="score pos">+5.3</td><td class="hi">High</td></tr><tr><td>Volkswagen</td><td>Autos</td><td>3.5</td><td>6.5</td><td>5.0</td><td>3.0</td><td>7.5</td><td class="score pos">+5.1</td><td class="hi">High</td></tr><tr><td>Danone</td><td>Food</td><td>3.0</td><td>5.0</td><td>5.0</td><td>3.5</td><td>5.5</td><td class="score pos">+4.4</td><td class="hi">High</td></tr><tr><td>Air Liquide</td><td>Ind. Gases</td><td>6.0</td><td>5.0</td><td>2.0</td><td>5.0</td><td>3.0</td><td class="score pos">+4.2</td><td class="hi">High</td></tr><tr><td>ASML</td><td>Semiconductors</td><td>0.5</td><td>3.0</td><td>1.0</td><td>0.5</td><td>1.0</td><td class="score pos">+1.2</td><td class="neu">Neutral</td></tr><tr><td>Verbund</td><td>Utilities</td><td>-7.0</td><td>9.0</td><td>-1.5</td><td>-2.0</td><td>-1.0</td><td class="score neg">-0.5</td><td class="neu">Neutral</td></tr><tr><td>Iberdrola</td><td>Utilities</td><td>-5.0</td><td>5.0</td><td>-1.5</td><td>-2.0</td><td>-1.0</td><td class="score neg">-0.9</td><td class="neu">Neutral</td></tr><tr><td>Orsted</td><td>Utilities</td><td>-6.0</td><td>4.0</td><td>-1.5</td><td>-2.0</td><td>-1.0</td><td class="score neg">-1.3</td><td class="ben">Beneficiary</td></tr><tr><td>Repsol</td><td>Energy</td><td>-6.0</td><td>4.0</td><td>-1.5</td><td>-2.0</td><td>-1.5</td><td class="score neg">-1.4</td><td class="ben">Beneficiary</td></tr><tr><td>ENI</td><td>Energy</td><td>-7.0</td><td>4.0</td><td>-2.0</td><td>-3.0</td><td>-2.0</td><td class="score neg">-2.0</td><td class="ben">Beneficiary</td></tr><tr><td>TotalEnergies</td><td>Energy</td><td>-8.0</td><td>3.0</td><td>-2.0</td><td>-3.0</td><td>-2.0</td><td class="score neg">-2.4</td><td class="ben">Beneficiary</td></tr><tr><td>Shell</td><td>Energy</td><td>-8.5</td><td>2.0</td><td>-2.0</td><td>-3.0</td><td>-2.0</td><td class="score neg">-2.7</td><td class="ben">Beneficiary</td></tr><tr><td>Equinor</td><td>Energy</td><td>-9.0</td><td>2.0</td><td>-2.0</td><td>-3.0</td><td>-2.0</td><td class="score neg">-2.8</td><td class="ben">Beneficiary</td></tr></tbody></table></div>
+    </div>
+    <div id="smid-panel" class="table-panel hide" style="margin-top:16px">
+      <div class="table-wrap"><table id="smidTable"><thead><tr><th>SMID </th><th>Sector</th><th>Ctry</th><th>Gas</th><th>EU</th><th>Price</th><th>Sub</th><th>Chain</th><th>Comp</th><th>Rating</th></tr></thead><tbody><tr><td>SGL Carbon</td><td>Carbon/Graphite</td><td>DE</td><td>8.0</td><td>8.0</td><td>5.5</td><td>8.0</td><td>4.0</td><td class="score pos">+6.7</td><td class="sev">Severe</td></tr><tr><td>Vidrala</td><td>Glass</td><td>ES</td><td>8.0</td><td>8.5</td><td>5.0</td><td>8.5</td><td>3.0</td><td class="score pos">+6.6</td><td class="sev">Severe</td></tr><tr><td>Aurubis</td><td>Copper</td><td>DE</td><td>7.0</td><td>8.0</td><td>5.0</td><td>6.0</td><td>5.0</td><td class="score pos">+6.2</td><td class="sev">Severe</td></tr><tr><td>Outokumpu</td><td>Stainless Steel</td><td>FI</td><td>6.0</td><td>7.5</td><td>6.5</td><td>5.0</td><td>6.0</td><td class="score pos">+6.2</td><td class="sev">Severe</td></tr><tr><td>OCI NV</td><td>Fertilizers</td><td>NL</td><td>9.0</td><td>4.5</td><td>3.0</td><td>9.5</td><td>4.0</td><td class="score pos">+6.0</td><td class="sev">Severe</td></tr><tr><td>Wienerberger</td><td>Ceramics</td><td>AT</td><td>7.0</td><td>7.0</td><td>5.0</td><td>7.0</td><td>4.0</td><td class="score pos">+6.0</td><td class="sev">Severe</td></tr><tr><td>Rockwool</td><td>Insulation</td><td>DK</td><td>7.5</td><td>7.0</td><td>4.0</td><td>7.0</td><td>3.0</td><td class="score pos">+5.7</td><td class="hi">High</td></tr><tr><td>Aperam</td><td>Stainless Steel</td><td>LU</td><td>5.5</td><td>6.0</td><td>6.0</td><td>5.0</td><td>6.0</td><td class="score pos">+5.7</td><td class="hi">High</td></tr><tr><td>Gerresheimer</td><td>Glass/Pharma</td><td>DE</td><td>7.0</td><td>7.0</td><td>3.5</td><td>7.5</td><td>3.0</td><td class="score pos">+5.6</td><td class="hi">High</td></tr><tr><td>Synthomer</td><td>Polymers</td><td>UK</td><td>6.0</td><td>6.0</td><td>5.5</td><td>5.5</td><td>5.0</td><td class="score pos">+5.6</td><td class="hi">High</td></tr><tr><td>Buzzi</td><td>Cement</td><td>IT</td><td>6.0</td><td>5.5</td><td>5.0</td><td>5.5</td><td>4.0</td><td class="score pos">+5.2</td><td class="hi">High</td></tr><tr><td>Clariant</td><td>Spec. Chem</td><td>CH</td><td>5.0</td><td>5.5</td><td>4.0</td><td>5.0</td><td>4.5</td><td class="score pos">+4.8</td><td class="hi">High</td></tr><tr><td>Mondi</td><td>Packaging</td><td>UK</td><td>5.0</td><td>5.5</td><td>4.0</td><td>4.5</td><td>3.5</td><td class="score pos">+4.5</td><td class="hi">High</td></tr><tr><td>Terna</td><td>Grid Operator</td><td>IT</td><td>0.0</td><td>8.0</td><td>0.5</td><td>0.0</td><td>0.5</td><td class="score pos">+1.8</td><td class="neu">Neutral</td></tr><tr><td>Norsk Hydro</td><td>Aluminium</td><td>NO</td><td>-4.0</td><td>5.0</td><td>-1.0</td><td>-2.0</td><td>3.0</td><td class="score pos">+0.2</td><td class="neu">Neutral</td></tr><tr><td>EDP Renovaveis</td><td>Renewables</td><td>PT</td><td>-5.5</td><td>5.0</td><td>-1.5</td><td>-2.0</td><td>-1.0</td><td class="score neg">-1.0</td><td class="neu">Neutral</td></tr><tr><td>TGS</td><td>Seismic Data</td><td>NO</td><td>-5.0</td><td>2.0</td><td>-1.0</td><td>-2.0</td><td>-1.0</td><td class="score neg">-1.4</td><td class="ben">Beneficiary</td></tr><tr><td>Energean</td><td>E&amp;P Gas</td><td>UK</td><td>-6.5</td><td>3.0</td><td>-2.0</td><td>-3.0</td><td>-1.5</td><td class="score neg">-2.0</td><td class="ben">Beneficiary</td></tr><tr><td>Harbour Energy</td><td>E&amp;P</td><td>UK</td><td>-7.0</td><td>3.0</td><td>-2.0</td><td>-3.0</td><td>-1.5</td><td class="score neg">-2.1</td><td class="ben">Beneficiary</td></tr><tr><td>Var Energi</td><td>E&amp;P</td><td>NO</td><td>-7.5</td><td>2.0</td><td>-2.0</td><td>-3.0</td><td>-2.0</td><td class="score neg">-2.5</td><td class="ben">Beneficiary</td></tr><tr><td>Aker BP</td><td>E&amp;P</td><td>NO</td><td>-8.0</td><td>2.0</td><td>-2.0</td><td>-3.0</td><td>-2.0</td><td class="score neg">-2.6</td><td class="ben">Beneficiary</td></tr></tbody></table></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="grid-3">
+      <div class="card">
+        <div class="topline"><h2 style="margin:0;font-size:26px">Short Basket</h2><span class="badge rose">Most exposed</span></div>
+        <div class="chips">
+          <span class="chip">BASF</span><span class="chip">Covestro</span><span class="chip">Wacker Chemie</span>
+          <span class="chip">Salzgitter</span><span class="chip">ThyssenKrupp</span>
+          <span class="chip">SGL Carbon</span><span class="chip">Vidrala</span><span class="chip">OCI NV</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="topline"><h2 style="margin:0;font-size:26px">Long Basket</h2><span class="badge green">Natural beneficiaries</span></div>
+        <div class="chips">
+          <span class="chip">Equinor</span><span class="chip">Shell</span><span class="chip">TotalEnergies</span>
+          <span class="chip">Aker BP</span><span class="chip">Var Energi</span><span class="chip">Harbour Energy</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="topline"><h2 style="margin:0;font-size:26px">Relative Defense</h2><span class="badge blue">Buffers</span></div>
+        <div class="chips">
+          <span class="chip">Terna</span><span class="chip">Orsted</span><span class="chip">Iberdrola</span>
+          <span class="chip">Verbund</span><span class="chip">EDP Renováveis</span><span class="chip">CE-like hydro / grids</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="scenarios">
+    <h2>Scenario Fan</h2>
+    <div class="scenarios">
+      <div class="scenario">
+        <div class="badge green">Base</div>
+        <h3>Normalisation</h3>
+        <div class="prob">55%</div>
+        <ul>
+          <li>TTF fades toward €35–40</li>
+          <li>Refill risk eases</li>
+          <li>ECB can resume easing later</li>
+          <li>Deep cyclicals rebound hardest</li>
+        </ul>
+      </div>
+      <div class="scenario">
+        <div class="badge amber">Stress</div>
+        <h3>Sustained Disruption</h3>
+        <div class="prob">35%</div>
+        <ul>
+          <li>TTF holds €48–60</li>
+          <li>Storage remains tight into Q3</li>
+          <li>Chemicals / glass / metals keep underperforming</li>
+          <li>Energy and renewables stay leaders</li>
+        </ul>
+      </div>
+      <div class="scenario">
+        <div class="badge rose">Tail</div>
+        <h3>Full Escalation</h3>
+        <div class="prob">10%</div>
+        <ul>
+          <li>TTF revisits €80–120</li>
+          <li>Industrial curtailment risk returns</li>
+          <li>Intervention and windfall-tax risk jumps</li>
+          <li>Balance-sheet quality dominates</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">As of 19 Mar 2026</div>
+</div>
+
+<script>
+const tabs=[...document.querySelectorAll('.tab-btn')];
+const panels=[...document.querySelectorAll('.table-panel')];
+tabs.forEach(btn=>btn.addEventListener('click',()=>{
+  tabs.forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  panels.forEach(p=>p.classList.add('hide'));
+  document.getElementById(btn.dataset.target).classList.remove('hide');
+  document.getElementById('nameFilter').dispatchEvent(new Event('input'));
+}));
+
+const filterInput=document.getElementById('nameFilter');
+filterInput.addEventListener('input', (e)=>{
+  const q=e.target.value.toLowerCase().trim();
+  panels.forEach(panel=>{
+    panel.querySelectorAll('tbody tr').forEach(row=>{
+      const text=row.innerText.toLowerCase();
+      row.style.display = text.includes(q) ? '' : 'none';
+    });
+  });
+});
+
+function compositeCellColor(v){
+  const min=-3, max=8;
+  const t=Math.max(0,Math.min(1,(v-min)/(max-min)));
+  const hue=140-(t*140); // green to red
+  const bg=`hsla(${hue}, 65%, 45%, .18)`;
+  return bg;
+}
+function factorCellColor(v){
+  if(isNaN(v)) return '';
+  const t=Math.max(0,Math.min(1,v/10));
+  const hue=135-(t*135);
+  return `hsla(${hue}, 72%, 42%, .18)`;
+}
+
+document.querySelectorAll('table tbody tr').forEach(row=>{
+  [...row.children].forEach((td, idx)=>{
+    const raw=td.textContent.trim().replace('−','-').replace('+','');
+    const num=parseFloat(raw);
+    if(!isNaN(num) && idx > 1) {
+      td.style.background = factorCellColor(num);
+    }
+  });
+});
+
+document.querySelectorAll('.score').forEach(td=>{
+  const raw=td.textContent.trim().replace('−','-').replace('+','');
+  const num=parseFloat(raw);
+  if(!isNaN(num)){
+    td.style.background=compositeCellColor(num);
+    td.style.borderRadius='10px';
+  }
+});
+</script>
+</body>
+</html>
